@@ -3,10 +3,8 @@
 // in the html.
 let dateDisplay = document.querySelector("#currentDay");
 let date =dayjs().format('MMM DD, YYYY');
-dateDisplay.append(date)
-// console.log(currentHour);
-let currentHour = "hour-" + dayjs().format('hh')
-
+dateDisplay.append(date);
+let currentHour = "hour-" + dayjs().format('hh');
 
 let timeBlockEl = document.getElementsByClassName("time-block");
 console.log(timeBlockEl);
@@ -18,10 +16,10 @@ console.log(militaryTime)
 for (let i = 0; i < timeBlockEl.length; i++) {
   let timeBlock = timeBlockEl[i];
   console.log(timeBlock);
-
+  
   let time = timeBlock.getAttribute("data-time");
   console.log(time)
-
+  
   if (time < militaryTime){
     timeBlock.classList.add("past");
   }else if (time == militaryTime){
@@ -30,6 +28,27 @@ for (let i = 0; i < timeBlockEl.length; i++) {
     timeBlock.classList.add("future");
   }
 };
+
+
+let saveBtnEl = document.getElementsByClassName("saveBtn");
+console.log(saveBtnEl);
+
+let textAreas = document.getElementsByClassName("description");
+console.log(textAreas)
+
+for (let i = 0; i < saveBtnEl.length; i++) {
+  saveBtnEl[i].addEventListener("click", function (event) {
+    console.log(saveBtn[i]);
+    let target = event.target;
+    let timeEl = target.getAttribute("data-time");
+    let textArea = document.querySelector("textArea");
+
+  });
+}
+
+
+
+
 
 
 
@@ -41,12 +60,7 @@ for (let i = 0; i < timeBlockEl.length; i++) {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
+  
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
