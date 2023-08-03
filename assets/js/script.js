@@ -4,42 +4,34 @@
 let dateDisplay = document.querySelector("#currentDay");
 let date =dayjs().format('MMM DD, YYYY');
 dateDisplay.append(date)
+// console.log(currentHour);
 let currentHour = "hour-" + dayjs().format('hh')
-console.log(currentHour)
 
-let divIds = ["hour-09","hour-10","hour-11","hour-12","hour-01","hour-02","hour-03", "hour-04", "hour-05"];
-console.log(divIds)
 
-let divValue = divIds.textContent;
-console.log(divValue)
+let timeBlockEl = document.getElementsByClassName("time-block");
+console.log(timeBlockEl);
 
-let compareValue = "hour-11";
-console.log(compareValue)
+let militaryTime = new Date().getHours();
+console.log(militaryTime)
 
-for (let i = 0; i < divIds.length; i++) {
-let divEl = document.querySelector(divIds[i]);
- if (divEl == compareValue){
-  console.log("Hello")
-  
-  
- }else{
-  console.log("error")
- }
-  
-}
 
-// function for selecting time and changing color
-// document.querySelectorAll('.time-block').forEach(timeBlock => {
-//   let blockHour = parseInt(timeBlock.querySelector('.hour').getAttribute('data-time'), 10);
+for (let i = 0; i < timeBlockEl.length; i++) {
+  let timeBlock = timeBlockEl[i];
+  console.log(timeBlock);
 
-//   if (currentHour > blockHour) {
-//     timeBlock.classList.add('past');
-//   } else if (currentHour === blockHour) {
-//     timeBlock.classList.add('present');
-//   } else {
-//     timeBlock.classList.add('future');
-//   }
-// });
+  let time = timeBlock.getAttribute("data-time");
+  console.log(time)
+
+  if (time < 15){
+    timeBlock.classList.add("past");
+  }else if (time === militaryTime){
+    timeBlock.classList.add("present")
+  }else{
+    timeBlock.classList.add("future");
+  }
+};
+
+
 
 
   // TODO: Add a listener for click events on the save button. This code should
