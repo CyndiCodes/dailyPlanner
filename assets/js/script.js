@@ -22,9 +22,9 @@ for (let i = 0; i < timeBlockEl.length; i++) {
   let time = timeBlock.getAttribute("data-time");
   console.log(time)
 
-  if (time < 15){
+  if (time < militaryTime){
     timeBlock.classList.add("past");
-  }else if (time === militaryTime){
+  }else if (time == militaryTime){
     timeBlock.classList.add("present")
   }else{
     timeBlock.classList.add("future");
