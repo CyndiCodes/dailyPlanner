@@ -7,18 +7,18 @@ dateDisplay.append(date);
 let currentHour = "hour-" + dayjs().format('hh');
 
 let timeBlockEl = document.getElementsByClassName("time-block");
-console.log(timeBlockEl);
+// console.log(timeBlockEl);
 
 let militaryTime = new Date().getHours();
-console.log(militaryTime)
+// console.log(militaryTime)
 
 
 for (let i = 0; i < timeBlockEl.length; i++) {
   let timeBlock = timeBlockEl[i];
-  console.log(timeBlock);
+  // console.log(timeBlock);
   
   let time = timeBlock.getAttribute("data-time");
-  console.log(time)
+  // console.log(time)
   
   if (time < militaryTime){
     timeBlock.classList.add("past");
@@ -29,24 +29,44 @@ for (let i = 0; i < timeBlockEl.length; i++) {
   }
 };
 
+// function render(){
+
+// }
+
+// let description = localStorage.getItem("description") || 0;
 
 let saveBtnEl = document.getElementsByClassName("saveBtn");
 console.log(saveBtnEl);
 
-let textAreas = document.getElementsByClassName("description");
+let textAreas = document.querySelectorAll("#description");
+// to grab input element
 console.log(textAreas)
+
 
 for (let i = 0; i < saveBtnEl.length; i++) {
   saveBtnEl[i].addEventListener("click", function (event) {
-    console.log(saveBtn[i]);
-    let target = event.target;
-    let timeEl = target.getAttribute("data-time");
-    let textArea = document.querySelector("textArea");
+    event.preventDefault();
+    console.log(saveBtnEl[i]);
+    
+    let hourlyAgenda = {
+      hour9: textAreas[0].value.trim(),
+      hour10: textAreas[1].value.trim(),
+      hour11: textAreas[2].value.trim(),
+      hour12: textAreas[3].value.trim(),
+      hour1: textAreas[4].value.trim(),
+      hour2: textAreas[5].value.trim(),
+      hour3: textAreas[6].value.trim(),
+      hour4: textAreas[7].value.trim(),
+      hour5: textAreas[8].value.trim(),
+    }
+    
+    localStorage.setItem("textArea", JSON.stringify(hourlyAgenda));
 
   });
 }
 
 
+localStorage.getItem("textArea", textAreas) 
 
 
 
