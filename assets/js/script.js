@@ -5,16 +5,21 @@ let dateDisplay = document.querySelector("#currentDay");
 let date =dayjs().format('MMM DD, YYYY');
 dateDisplay.append(date);
 let currentHour = "hour-" + dayjs().format('hh');
+
 let timeBlockEl = document.getElementsByClassName("time-block");
 // console.log(timeBlockEl);
+
 let militaryTime = new Date().getHours();
 // console.log(militaryTime)
+
 
 for (let i = 0; i < timeBlockEl.length; i++) {
   let timeBlock = timeBlockEl[i];
   // console.log(timeBlock);
+  
   let time = timeBlock.getAttribute("data-time");
   // console.log(time)
+  
   if (time < militaryTime){
     timeBlock.classList.add("past");
   }else if (time == militaryTime){
@@ -23,38 +28,56 @@ for (let i = 0; i < timeBlockEl.length; i++) {
     timeBlock.classList.add("future");
   }
 };
-
-let saveBtnEl = document.getElementsByClassName("saveBtn");
-
-for (let i = 0; i < saveBtnEl.length; i++) {
-  saveBtnEl[i].addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log(saveBtnEl[i]);
-    let textAreas = document.querySelectorAll("#description");
-    let hourlyAgenda = {
-      hour9: textAreas[0].value.trim(),
-      hour10: textAreas[1].value.trim(),
-      hour11: textAreas[2].value.trim(),
-      hour12: textAreas[3].value.trim(),
-      hour13: textAreas[4].value.trim(),
-      hour14: textAreas[5].value.trim(),
-      hour15: textAreas[6].value.trim(),
-      hour16: textAreas[7].value.trim(),
-      hour17: textAreas[8].value.trim(),
-    }
-    
-    textAreas.textContent = description;
-    localStorage.setItem("hourlyAgenda", JSON.stringify(hourlyAgenda));
-
-  //   let divId = document.querySelector("#hour9");
-
-  //   let savedList = JSON.parse(localStorage.getItem("hourlyAgenda"));
-    
-  //     textAreas.textContent = savedList;
+saveInput();
+function saveInput(){
+  let savedList = JSON.parse(localStorage.getItem("hourlyAgenda"));
   
-  // experimenting with example
-  });
+  let saveBtnEl = document.getElementsByClassName("saveBtn") || 0;
+  
+  for (let i = 0; i < saveBtnEl.length; i++) {
+    saveBtnEl[i].addEventListener("click", function (event) {
+      event.preventDefault();
+      console.log(saveBtnEl[i]);
+      let textAreas = document.querySelectorAll("#description");
+      
+      let hourlyAgenda = {
+        hour9: textAreas[0].value.trim(),
+        hour10: textAreas[1].value.trim(),
+        hour11: textAreas[2].value.trim(),
+        hour12: textAreas[3].value.trim(),
+        hour13: textAreas[4].value.trim(),
+        hour14: textAreas[5].value.trim(),
+        hour15: textAreas[6].value.trim(),
+        hour16: textAreas[7].value.trim(),
+        hour17: textAreas[8].value.trim(),
+      }
+      
+      textAreas.textContent = description;
+      localStorage.setItem("hourlyAgenda", JSON.stringify(hourlyAgenda));
+      
+    });
+    
+    if(savedList !== null){
+    let textAreas = document.querySelectorAll("#description");
+    // asked chatGPT to type this out for me instead of typing one by one. 
+    textAreas[0].value = savedList.hour9;
+    textAreas[1].value = savedList.hour10;
+    textAreas[2].value = savedList.hour11;
+    textAreas[3].value = savedList.hour12;
+    textAreas[4].value = savedList.hour13;
+    textAreas[5].value = savedList.hour14;
+    textAreas[6].value = savedList.hour15;
+    textAreas[7].value = savedList.hour16;
+    textAreas[8].value = savedList.hour17;
+    }
+
+  }
+
 }
+
+
+// let renderList = JSON.parse(localStorage.getItem("textArea"));
+
 
 
 
