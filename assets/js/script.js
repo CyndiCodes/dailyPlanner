@@ -5,21 +5,16 @@ let dateDisplay = document.querySelector("#currentDay");
 let date =dayjs().format('MMM DD, YYYY');
 dateDisplay.append(date);
 let currentHour = "hour-" + dayjs().format('hh');
-
 let timeBlockEl = document.getElementsByClassName("time-block");
 // console.log(timeBlockEl);
-
 let militaryTime = new Date().getHours();
 // console.log(militaryTime)
-
 
 for (let i = 0; i < timeBlockEl.length; i++) {
   let timeBlock = timeBlockEl[i];
   // console.log(timeBlock);
-  
   let time = timeBlock.getAttribute("data-time");
   // console.log(time)
-  
   if (time < militaryTime){
     timeBlock.classList.add("past");
   }else if (time == militaryTime){
@@ -29,47 +24,37 @@ for (let i = 0; i < timeBlockEl.length; i++) {
   }
 };
 
-// function render(){
-
-// }
-
-// let description = localStorage.getItem("description") || 0;
-
 let saveBtnEl = document.getElementsByClassName("saveBtn");
-console.log(saveBtnEl);
-
-let textAreas = document.querySelectorAll("#description");
-// to grab input element
-console.log(textAreas)
-
 
 for (let i = 0; i < saveBtnEl.length; i++) {
   saveBtnEl[i].addEventListener("click", function (event) {
     event.preventDefault();
     console.log(saveBtnEl[i]);
-    
+    let textAreas = document.querySelectorAll("#description");
     let hourlyAgenda = {
       hour9: textAreas[0].value.trim(),
       hour10: textAreas[1].value.trim(),
       hour11: textAreas[2].value.trim(),
       hour12: textAreas[3].value.trim(),
-      hour1: textAreas[4].value.trim(),
-      hour2: textAreas[5].value.trim(),
-      hour3: textAreas[6].value.trim(),
-      hour4: textAreas[7].value.trim(),
-      hour5: textAreas[8].value.trim(),
+      hour13: textAreas[4].value.trim(),
+      hour14: textAreas[5].value.trim(),
+      hour15: textAreas[6].value.trim(),
+      hour16: textAreas[7].value.trim(),
+      hour17: textAreas[8].value.trim(),
     }
     
-    localStorage.setItem("textArea", JSON.stringify(hourlyAgenda));
+    textAreas.textContent = description;
+    localStorage.setItem("hourlyAgenda", JSON.stringify(hourlyAgenda));
 
+  //   let divId = document.querySelector("#hour9");
+
+  //   let savedList = JSON.parse(localStorage.getItem("hourlyAgenda"));
+    
+  //     textAreas.textContent = savedList;
+  
+  // experimenting with example
   });
 }
-
-
-localStorage.getItem("textArea", textAreas) 
-
-
-
 
 
 
