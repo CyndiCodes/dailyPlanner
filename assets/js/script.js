@@ -33,7 +33,10 @@ function saveInput(){
   let savedList = JSON.parse(localStorage.getItem("hourlyAgenda"));
   
   let saveBtnEl = document.getElementsByClassName("saveBtn") || 0;
-  
+  // let saveBtns = $(".saveBtn")
+  // saveBtns.on("click", function(){
+  //   localStorage.setItem($(this).parent("div").id, $(this).siblings("textarea").val())
+  // }) example of jquery for later
   for (let i = 0; i < saveBtnEl.length; i++) {
     saveBtnEl[i].addEventListener("click", function (event) {
       event.preventDefault();
@@ -52,7 +55,8 @@ function saveInput(){
         hour17: textAreas[8].value.trim(),
       }
       
-      textAreas.textContent = description;
+      // textAreas.textContent = description;
+      // not doing anything
       localStorage.setItem("hourlyAgenda", JSON.stringify(hourlyAgenda));
       
     });
