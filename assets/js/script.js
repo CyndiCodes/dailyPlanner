@@ -12,24 +12,27 @@ let timeBlockEl = document.getElementsByClassName("time-block");
 let militaryTime = new Date().getHours();
 // console.log(militaryTime)
 
+timeCheck();
+function timeCheck(){
+  for (let i = 0; i < timeBlockEl.length; i++) {
+    let timeBlock = timeBlockEl[i];
+    // console.log(timeBlock);
+    
+    let time = timeBlock.getAttribute("data-time");
+    // console.log(time)
+    
+    if (time < militaryTime){
+      timeBlock.classList.add("past");
+    }else if (time == militaryTime){
+      timeBlock.classList.add("present")
+    }else{
+      timeBlock.classList.add("future");
+    }
+  };
+}
 
-for (let i = 0; i < timeBlockEl.length; i++) {
-  let timeBlock = timeBlockEl[i];
-  // console.log(timeBlock);
-  
-  let time = timeBlock.getAttribute("data-time");
-  // console.log(time)
-  
-  if (time < militaryTime){
-    timeBlock.classList.add("past");
-  }else if (time == militaryTime){
-    timeBlock.classList.add("present")
-  }else{
-    timeBlock.classList.add("future");
-  }
-};
-saveInput();
-function saveInput(){
+renderSaved();
+function renderSaved(){
   let savedList = JSON.parse(localStorage.getItem("hourlyAgenda"));
   
   let saveBtnEl = document.getElementsByClassName("saveBtn") || 0;
@@ -81,6 +84,17 @@ function saveInput(){
 
 
 // let renderList = JSON.parse(localStorage.getItem("textArea"));
+
+
+
+
+
+
+
+
+
+
+
 
 
 
