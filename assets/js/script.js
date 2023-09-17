@@ -83,7 +83,7 @@ function renderSaved(){
 }
 
 
-// let renderList = JSON.parse(localStorage.getItem("textArea"));
+let renderList = JSON.parse(localStorage.getItem("textArea"));
 
 
 
