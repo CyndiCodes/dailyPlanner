@@ -53,4 +53,15 @@ function renderStorage(){
   }
 };
 
+// added clear local storage btn
+let clearSearch = $("#clearBtn");
+function clearBtn(event){
+  event.target
+  console.log(event.target)
+  localStorage.clear();
+  location.reload();
+}
+
+clearSearch.on('click', clearBtn)
+
 renderStorage()
